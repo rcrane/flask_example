@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Example</title>
+</head>
+<body>
+
+    <div class="container" align="left">
+        <p>Execute some backend script: <a href="/run_some_backend_stuff/" target="blank"><button>Hit me!</button></a></p>
+    </div>
+
+
+    <form action="/" method=post enctype=multipart/form-data>
+        <label for="title">Some Input:</label>
+        <input type="text" id="input" name="input_id">
+        <input type=submit value=Submit>
+    </form>
+
+
+    <div class="hello_world_class" align="left">
+        <p>JavaScript test: <a href="/hello_world/" target="" onclick="hello_world_alert()"><button>Hello</button></a></p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+    function hello_world_alert(){
+        alert("Hello World!");
+    }
+    </script>
+
+    <div id='info_section'>
+            <p>{{ data }}</p>
+    </div>
+
+</body>
+</html>
