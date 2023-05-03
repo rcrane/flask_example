@@ -1,7 +1,7 @@
 import os
 import subprocess
-from backend import backend
 from flask import Flask, request, redirect, render_template
+import backend
 
 
 app = Flask(__name__, template_folder='frontend')
@@ -35,11 +35,8 @@ def upload_client_session():
 
             # do some python magic here
 
-
             # feed data to the website
             return render_template("index.html", data=client_input_id)
-
-    return redirect('/')
 
 
 @app.route('/hello_world/', methods=['GET'])
