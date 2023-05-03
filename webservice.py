@@ -9,11 +9,15 @@ app = Flask(__name__, template_folder='frontend')
 
 @app.route('/', methods=['GET'])
 def service_home():
+    """Default route"""
+
     return render_template('index.html')
 
 
 @app.route('/run_some_backend_stuff/')
 def name_doesnt_matter():
+    """Run a subprocess and call a script in the backend"""
+
     text = subprocess.check_output("pwd", universal_newlines=True, stderr=subprocess.PIPE)
     print("Current working_path: ", text, flush=True)
     return run_bash_script()
@@ -21,6 +25,8 @@ def name_doesnt_matter():
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_client_session():
+    """Take an input from a form"""
+
     if request.method == 'POST':
         client_input_id = request.form['input_id']
         # check if the session_id is not provided
@@ -41,6 +47,7 @@ def upload_client_session():
 
 @app.route('/hello_world/', methods=['GET'])
 def print_message():
+    """Route for java script test"""
     print("Hello World triggerd!", flush=True)
     return redirect('/')
 
