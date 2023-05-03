@@ -1,4 +1,4 @@
-This is a little toy example for running the Python web server in a docker container on a linux host.
+This is a little toy example for running the Python web server Flask in a docker container on a linux host.
 
 Requirements: Docker
 
