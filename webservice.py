@@ -1,7 +1,8 @@
+"""Main Flask-example webservice module."""
 import os
 import subprocess
 from flask import Flask, request, redirect, render_template
-from backend.backend import run_bash_script
+from backend.backendscripts import run_bash_script
 
 
 app = Flask(__name__, template_folder='frontend')
