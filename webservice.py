@@ -43,9 +43,9 @@ def upload_client_session():
 
 
 @app.route('/hello_world/', methods=['GET'])
-def clean_system():
+def print_message():
 
-    print("Hello World triggerd!")
+    print("Hello World triggerd!", flush=True)
     return redirect('/')
 
 
