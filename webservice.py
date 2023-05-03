@@ -1,7 +1,7 @@
 import os
 import subprocess
 from flask import Flask, request, redirect, render_template
-import backend
+from backend.backend import run_bash_script
 
 
 app = Flask(__name__, template_folder='frontend')
@@ -16,12 +16,11 @@ def service_home():
 def name_doesnt_matter():
     text = subprocess.check_output("pwd", universal_newlines=True, stderr=subprocess.PIPE)
     print("Current working_path: ", text, flush=True)
-    return backend.run_bash_script()
+    return run_bash_script()
 
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_client_session():
-
     if request.method == 'POST':
         client_input_id = request.form['input_id']
         # check if the session_id is not provided
@@ -29,19 +28,19 @@ def upload_client_session():
             print('~~~~~ No input given! ~~~~~', flush=True)
             return redirect(request.url)
 
-        else:
-            # just to show that bash can be used as well:
-            os.system(f"echo id='\"{client_input_id}\"'")
+        # just to show that bash can be used as well:
+        os.system(f"echo id='\"{client_input_id}\"'")
 
-            # do some python magic here
+        # do some python magic here
 
-            # feed data to the website
-            return render_template("index.html", data=client_input_id)
+        # feed data to the website
+        return render_template("index.html", data=client_input_id)
+
+    return redirect('/')
 
 
 @app.route('/hello_world/', methods=['GET'])
 def print_message():
-
     print("Hello World triggerd!", flush=True)
     return redirect('/')
 
